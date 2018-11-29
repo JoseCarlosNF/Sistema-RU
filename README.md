@@ -1,9 +1,24 @@
 # Sistema-RU
 
+## Tabela de funções
+
+**Legendas**  
+Não iniciada: ❌   
+Concluida: ✅  
+Em Andamento: 🔆
+
+| função | status |
+|--------|:-------|
+|1. Novo Usuario|✅|
+|2. Controle de Acesso|❌|
+|3.1 Consultar|🔆|
+|3.2 Compar |🔆|
+|4. Entrada|❌|
+
 ## 1 Cadastro no Sistema
 Manipulação de arquivos, utilizados como base de dados.
 
-## 2 Controle da Acesso
+## 2 Controle de Acesso
 - Informar **em tempo real** o numero de alunos dentro do RU.
 - Permitir entrada até a **lotação de 300 pessoas**.
 - Apenas **cadastrados** e **com crédito** podem entrar.

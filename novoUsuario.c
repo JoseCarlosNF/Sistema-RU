@@ -1,10 +1,25 @@
 #include<stdio.h>
 
+int ultimoId(){
+    FILE *f;
+    int id;
+    char nome[15], sobrenome[15];
+    float credito;
+
+    f = fopen("dados.db", "r");
+
+    while(!feof(f)){
+        fscanf(f,"%d %s %s %f", &id, &nome, &sobrenome, &credito);
+    }
+    printf("%d\n", id);
+    return id;
+}
+
 void novoUsuario(){
     FILE *f;
-    char nome[30], sobrenome[30];
-    float credito;
     int id;
+    char nome[15], sobrenome[15];
+    float credito;
 
     f = fopen("dados.db", "a"); // Abrir arquivo
 
@@ -14,6 +29,7 @@ void novoUsuario(){
         printf("Arquivo aberto\n"); // Sinal de arquivo aberto (só pra teste)
 
 
+    id = ultimoId() + 1;
     printf("Nome:");                /* Inserção dos dados */
     scanf("%s", &nome);             // Nome: xxxxxxxxxxxxxxx
     printf("Sobrenome:");           // Sobrenome: xxxxxxxxxxxxxxx
@@ -21,7 +37,7 @@ void novoUsuario(){
     printf("Credito:");
     scanf("%f", &credito);  
 
-    fprintf(f, "id %s %s %.2f\n", nome, sobrenome, credito); // Inserir no arquivo
+    fprintf(f, "%d %s %s %.2f\n", id, nome, sobrenome, credito); // Inserir no arquivo
 
     fclose(f);  // Fechar o arquivo
 }

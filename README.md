@@ -11,8 +11,7 @@ Em Andamento: 🔆
 |--------|:-------|
 |1. Novo Usuario|✅|
 |2. Controle de Acesso|❌|
-|3.1 Consultar|🔆|
-|3.2 Compar |🔆|
+|3. Creditos|🔆|
 |4. Entrada|❌|
 
 ## 1 Cadastro no Sistema

@@ -1,20 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-int ultimoId(){
-    FILE *f;
-    int id;
-    char nome[15], sobrenome[15];
-    float credito;
 
-    f = fopen("dados.db", "r");
-
-    while(!feof(f)){
-        fscanf(f,"%d %s %s %f", &id, &nome, &sobrenome, &credito);
-    }
-    printf("%d\n", id);
-    return id;
-}
 void novoUsuario(){
     FILE *f;
     int id;
@@ -39,8 +26,20 @@ void novoUsuario(){
 
     fprintf(f, "%d %s %s %.2f\n", id, nome, sobrenome, credito); // Inserir no arquivo
 
-    fclose(f);  // Fechar o arquivo
-}
+    fclose(f);}
+    int ultimoId(){
+        FILE *f;
+        int id;
+        char nome[15], sobrenome[15];
+        float credito;
+
+        f = fopen("dados.db", "r");
+
+        while(!feof(f)){
+            fscanf(f,"%d %s %s %f", &id, &nome, &sobrenome, &credito);
+        }
+        printf("%d\n", id);
+        return id;}
 void creditos(){
     int operacao;
 
@@ -58,38 +57,33 @@ void creditos(){
             case 1:consulta();break;
             case 2:printf("compra()\n");break;
             case 0:printf("menu()\n"); break;
-            default:printf("OPERACAO INVALIDA\n");break;
+            default:printf("OPERACAO INVALIDA\n");break;}}}
+    void consulta(){
+        FILE *f;
+        int id, idBuscar;
+        char nome[15], sobrenome[15];
+        float credito;
+
+        f = fopen("dados.db", "r");
+
+        if (f == NULL)
+            perror("Nao foi possivel abrir o arquivo.");
+        else{
+            printf("Digite o ID para buscar: ");
+            scanf("%d", &idBuscar);
         }
-    }
 
-}
-void consulta(){
-    FILE *f;
-    int id, idBuscar;
-    char nome[15], sobrenome[15];
-    float credito;
-
-    f = fopen("dados.db", "r");
-
-    if (f == NULL)
-        perror("Nao foi possivel abrir o arquivo.");
-    else{
-        printf("Digite o ID para buscar: ");
-        scanf("%d", &idBuscar);
-    }
-
-    fscanf(f,"%d %s %s %f", &id, &nome, &sobrenome, &credito);
-
-    while(!feof(f)){
-        if (id == idBuscar){
-            printf("%d %s %s %.2f\n", id, nome, sobrenome, credito);
-            break;
-        }
         fscanf(f,"%d %s %s %f", &id, &nome, &sobrenome, &credito);
-    }
-    if (feof(f))
-        printf("NAO ENCONTRADO\n");
-}
+
+        while(!feof(f)){
+            if (id == idBuscar){
+                printf("%d %s %s %.2f\n", id, nome, sobrenome, credito);
+                break;
+            }
+            fscanf(f,"%d %s %s %f", &id, &nome, &sobrenome, &credito);
+        }
+        if (feof(f))
+            printf("NAO ENCONTRADO\n");}
 void menu(){
     int operacao;
     operacao = 1;

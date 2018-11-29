@@ -51,9 +51,11 @@ void consulta(){
     if (feof(f))
         printf("NAO ENCONTRADO\n");
 }
+
 void compra(){
     /* Comprar Creditos */
 }
+
 int main(){
     creditos();
     return 0;

@@ -113,10 +113,7 @@ void menu(){
             case 2:creditos();break;
             case 3:printf("entrarRU\n");break;
             case 0:printf("SAINDO...\n"); break;
-            default:printf("OPCAO INVALIDA\n");break;
-        }
-    }
-}
+            default:printf("OPCAO INVALIDA\n");break;}}}
 int main(){
     menu();
     return 0;

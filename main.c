@@ -15,7 +15,6 @@ int ultimoId(){
     printf("%d\n", id);
     return id;
 }
-
 void novoUsuario(){
     FILE *f;
     int id;
@@ -42,7 +41,55 @@ void novoUsuario(){
 
     fclose(f);  // Fechar o arquivo
 }
+void creditos(){
+    int operacao;
 
+    /* Menu Creditos*/
+    system("cls");
+    printf("=====/ CREDITOS /=====\n");
+    printf("1 - Consulta\n");
+    printf("2 - Compra\n");
+    printf("0 - Voltar\n");
+    printf("======================\n");
+    scanf("%d", &operacao);
+
+    while (operacao != 0){
+        switch (operacao){
+            case 1:consulta();break;
+            case 2:printf("compra()\n");break;
+            case 0:printf("menu()\n"); break;
+            default:printf("OPERACAO INVALIDA\n");break;
+        }
+    }
+
+}
+void consulta(){
+    FILE *f;
+    int id, idBuscar;
+    char nome[15], sobrenome[15];
+    float credito;
+
+    f = fopen("dados.db", "r");
+
+    if (f == NULL)
+        perror("Nao foi possivel abrir o arquivo.");
+    else{
+        printf("Digite o ID para buscar: ");
+        scanf("%d", &idBuscar);
+    }
+
+    fscanf(f,"%d %s %s %f", &id, &nome, &sobrenome, &credito);
+
+    while(!feof(f)){
+        if (id == idBuscar){
+            printf("%d %s %s %.2f\n", id, nome, sobrenome, credito);
+            break;
+        }
+        fscanf(f,"%d %s %s %f", &id, &nome, &sobrenome, &credito);
+    }
+    if (feof(f))
+        printf("NAO ENCONTRADO\n");
+}
 void menu(){
     int operacao;
     operacao = 1;
@@ -69,14 +116,13 @@ void menu(){
         
         switch (operacao){
             case 1:novoUsuario();break;
-            case 2:printf("controleCredito\n");break;
+            case 2:creditos();break;
             case 3:printf("entrarRU\n");break;
             case 0:printf("SAINDO...\n"); break;
             default:printf("OPCAO INVALIDA\n");break;
         }
     }
 }
-
 int main(){
     menu();
     return 0;

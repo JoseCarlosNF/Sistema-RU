@@ -9,7 +9,7 @@ Em Andamento: 🔆
 
 | função | status |
 |--------|:-------|
-|1. Novo Usuario|✅|
+|1. Novo Usuario|🔆|
 |2. Controle de Acesso|❌|
 |3. Creditos|🔆|
 |4. Entrada|❌|

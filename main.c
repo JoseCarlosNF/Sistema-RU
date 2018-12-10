@@ -63,9 +63,12 @@ int main(void){
                     }
                 }
             }
-            else
-                printf("Fora do Horario");
+            else if (11 > hora || hora > 14){
+                printf("Fora do Horario.\n");
                 getchar();
+            }
+            else if (lotacao >= 300)
+                printf("Lotacao Maxima. Aguarde um momento.\n");
         }
 
         // Menu RU - Opcao 4

@@ -76,6 +76,24 @@ void consultarCredito(void){
     }
 }
 
+void copiaTempToCadastro(){
+    FILE *aux;
+    FILE *f;
+    struct dadosCadastro aluno;
+
+    f = fopen("cadastro.txt", "w");
+    aux = fopen("temp.txt", "r");
+
+    while(!feof(aux)){
+        fscanf(aux, "%d %s %s %f", &aluno.id, aluno.nome, aluno.sobrenome, &aluno.credito);
+        if (feof(aux))
+            break;
+        fprintf(f, "%-5d %-15s %-15s %.2f\n", aluno.id, aluno.nome, aluno.sobrenome, aluno.credito);
+    }
+    fclose(f);
+    fclose(aux);
+}
+
 void comprarCredito(){
     FILE *f;
     FILE *aux;
@@ -118,30 +136,13 @@ void comprarCredito(){
     }
 }
 
-void copiaTempToCadastro(){
-    FILE *aux;
-    FILE *f;
-    struct dadosCadastro aluno;
-
-    f = fopen("cadastro.txt", "w");
-    aux = fopen("temp.txt", "r");
-
-    while(!feof(aux)){
-        fscanf(aux, "%d %s %s %f", &aluno.id, aluno.nome, aluno.sobrenome, &aluno.credito);
-        if (feof(aux))
-            break;
-        fprintf(f, "%-5d %-15s %-15s %.2f\n", aluno.id, aluno.nome, aluno.sobrenome, aluno.credito);
-    }
-
-    fclose(f);
-    fclose(aux);
-}
-
 int entrarRU(){
     FILE *f;
     FILE *aux;
     struct dadosCadastro aluno;
+    float compra;
     int idBusca;
+    int retorno;
 
     f = fopen("cadastro.txt", "r");
     aux = fopen("temp.txt", "w");
@@ -157,31 +158,33 @@ int entrarRU(){
         while(!feof(f)){
             fscanf(f, "%d %s %s %f", &aluno.id, aluno.nome, aluno.sobrenome, &aluno.credito);
             if (feof(f)){
-                break;
+                break;                
             }
             else if (aluno.id == idBusca){
-                if (aluno.credito >= 1){
-                    aluno.credito--;
-                    fprintf(aux, "%-5d %-15s %-15s %.2f\n", aluno.id, aluno.nome, aluno.sobrenome, aluno.credito);
+                if(aluno.credito >= 1){
+                    compra = aluno.credito - 1;
+                    fprintf(aux, "%-5d %-15s %-15s %.2f\n", aluno.id, aluno.nome, aluno.sobrenome, compra);                    
+                    retorno = 1;
                     printf("Entrada Autorizada.\n");
-                    getchar();
-                    return 1;
+                    printf("Aperter ENTER para continuar...\n");
+                    getchar();                    
                 }
                 else{
-                    fprintf(aux, "%-5d %-15s %-15s %.2f\n",aluno.id, aluno.nome, aluno.sobrenome, aluno.credito);
-                    printf("Saldo insulficiente\n");
-                    printf("Adquira novos Creditos em: 2.Creditos -> 2.Comprar Creditos");
+                    fprintf(aux, "%-5d %-15s %-15s %.2f\n",aluno.id, aluno.nome, aluno.sobrenome, aluno.credito);                
+                    retorno = 0;
+                    printf("Saldo insuficiente.\n");
+                    printf("Aperter ENTER para continuar...\n");
                     getchar();
                 }                    
             }
             else
-                fprintf(aux, "%-5d %-15s %-15s %.2f\n",aluno.id, aluno.nome, aluno.sobrenome, aluno.credito);
+                fprintf(aux, "%-5d %-15s %-15s %.2f\n",aluno.id, aluno.nome, aluno.sobrenome, aluno.credito);                        
         }
         fclose(f);
         fclose(aux);
         copiaTempToCadastro();
     }
-    return 0;
+    return retorno;
 }
 
 void arquivoTexto(){

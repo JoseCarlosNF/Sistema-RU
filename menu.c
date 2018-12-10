@@ -8,7 +8,7 @@ void limpatela(void){
     system("cls");
 }
 
-int menuRU(lotacao, hora, minuto){
+int menuRU(int lotacao, int hora, int minuto){
     int opcao;
 
     limpatela();

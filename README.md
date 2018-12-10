@@ -9,10 +9,10 @@ Em Andamento: 🔆
 
 | função | status |
 |--------|:-------|
-|1. Novo Usuario|🔆|
-|2. Controle de Acesso|❌|
-|3. Creditos|🔆|
-|4. Entrada|❌|
+|1. Novo Usuario|✅|
+|2. Controle de Acesso|🔆|
+|3. Creditos|✅|
+|4. Entrada|🔆|
 
 ## 1 Cadastro no Sistema
 Manipulação de arquivos, utilizados como base de dados.

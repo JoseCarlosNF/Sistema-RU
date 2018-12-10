@@ -15,4 +15,6 @@ int entrarRU(); // Atualiza o registro do usuario (descontado dos creditos a tax
 
 void arquivoTexto(); // Imprime os dados do banco em um aruivo de texto
 
+void apagaArquivoTemp(); // Apaga arquivo temporario
+
 #endif

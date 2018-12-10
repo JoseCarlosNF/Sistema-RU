@@ -9,6 +9,10 @@ struct dadosCadastro{
     float credito;
 };
 
+void apagaArquivoTemp(){
+    system("del temp.txt");
+}
+
 int ultimoID(){
     FILE *f;
     struct dadosCadastro aluno;
@@ -92,6 +96,7 @@ void copiaTempToCadastro(){
     }
     fclose(f);
     fclose(aux);
+    apagaArquivoTemp();
 }
 
 void comprarCredito(){
@@ -182,6 +187,7 @@ int entrarRU(){
         }
         fclose(f);
         fclose(aux);
+
         copiaTempToCadastro();
     }
     return retorno;

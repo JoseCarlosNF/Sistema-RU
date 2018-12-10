@@ -1,6 +1,6 @@
 1     Jose            Carlos          26.00
 2     Marco           Antonio         100.00
-3     Cintia          Moreira         43.00
+3     Cintia          Moreira         100.00
 4     Antonio         Marcos          50.00
 5     Joselita        Noronha         50.00
 6     Jose            Carlito         0.00

@@ -1,56 +1,85 @@
 #include "menu.c"
+#include "funcoes.c"
 #include <stdio.h>
 
-void main(void){
-    FILE *file;
+int main(void){
     int opcao;
+    int retorno;
+    int lotacao;
+    int hora;
+    int minuto;
 
-    file = fopen("sistema-ru.db", "r+");
+    lotacao = 0;
+    minuto = 0;
+    hora = 11;
 
-    if (file == NULL)
-        printf("Erro ao abrir SISTEMA-RU.DB.\n");
-    else{
-        while(1){
-            opcao = menuRU();
+    while(1){
+        opcao = menuRU(lotacao, hora, minuto);
 
-            // Menu RU - Opcao 1
-            if (opcao == 1)
-                printf("Novo usuario.\n");
+        // Menu RU - Opcao 1
+        if (opcao == 1){
+            novoUsuario();
+            getchar();
+        }
 
-            // Menu RU - Opcao 2
-            else if (opcao == 2){
-                while(1){
-                    opcao = menuCredito();
+        // Menu RU - Opcao 2
+        else if (opcao == 2){
+            while(1){
+                opcao = menuCredito();
 
-                    // Menu Credito - Opcao 1
-                    if (opcao == 1)
-                        printf("Consultar Credito.\n");
+                // Menu Credito - Opcao 1
+                if (opcao == 1){
+                    consultarCredito();
+                    getchar();
+                }
 
-                    // Menu Credito - Opcao 2
-                    else if (opcao == 2)
-                        printf("Comprar Credito.\n");
+                // Menu Credito - Opcao 2
+                else if (opcao == 2){
+                    comprarCredito();
+                    getchar();
+                }
 
-                    // Menu Credito - Opcao 0
-                    else if (opcao == 0)
-                        break;
-                        
-                    // Menu Credito - Opcao invalida
-                    else
-                        printf("OPCAO INVALIDA.\n");
-                }            
+                // Menu Credito - Opcao 0
+                else if (opcao == 0)
+                    break;
+                    
+                // Menu Credito - Opcao invalida
+                else
+                    printf("OPCAO INVALIDA.\n");
+            }            
+        }
+
+        // Menu RU - Opcao 3
+        else if (opcao == 3){
+            if ((11 <= hora && hora <= 14) && (lotacao < 300)){
+                retorno = entrarRU();
+                getchar();
+                if (retorno == 1){
+                    lotacao++;
+                    minuto += 10;
+                    if (minuto == 60){
+                        hora ++;
+                        minuto = 0;
+                    }
+                }
             }
-
-            // Menu RU - Opcao 3
-            else if (opcao == 3)
-                printf("Entrar no RU.\n");
-
-            // Menu RU - Opcao 0
-            else if (opcao == 0)
-                break;
-
-            // Menu RU - Opcao invalida
             else
-                printf("OPCAO INVALIDA.\n");
-        }        
+                printf("Fora do Horario");
+                getchar();
+        }
+
+        // Menu RU - Opcao 4
+        else if (opcao == 4){
+            arquivoTexto();
+            getchar();
+        }
+        
+        // Menu RU - Opcao 0
+        else if (opcao == 0)
+            break;
+
+        // Menu RU - Opcao invalida
+        else
+            printf("OPCAO INVALIDA.\n");
     }
 }

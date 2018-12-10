@@ -8,12 +8,12 @@ void limpatela(void){
     system("cls");
 }
 
-int menuRU(){
+int menuRU(lotacao, hora, minuto){
     int opcao;
 
     limpatela();
 
-    printf("Lotacao atual: xyx pessoas as xy:xy\n");
+    printf("Lotacao atual: %d pessoas as %d:%-0d\n", lotacao, hora, minuto);
     printf("Lotacao media: xyx\n");
     printf("   11:00 - 11:30: 050 pessoas\n");
     printf("   11:30 - 12:00: 100 pessoas\n");
@@ -26,6 +26,7 @@ int menuRU(){
     printf("1 - Novo Usuario\n");
     printf("2 - Creditos\n");
     printf("3 - Entrar no RU\n");
+    printf("4 - Lista de Usuarios\n");
     printf("0 - Sair do Programa\n");
     printf("=====================\n");
 

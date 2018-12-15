@@ -17,6 +17,6 @@ void arquivoTexto(); // Imprime o banco de dados dos usuário
 
 void apagaArquivoTemp(); // Apaga arquivo temporario (mudar de acordo com sistema opercional Windows: del; Linux: rm)
 
-int lotacaoMedia(); // retorna a lotação media
+int lotacaoMedia(); // Imprime a lotação media
 
 #endif

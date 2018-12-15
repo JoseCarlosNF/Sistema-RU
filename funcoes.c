@@ -15,6 +15,7 @@ void apagaArquivoTemp(){
 
 int ultimoID(){
     FILE *f;
+    int i=0;
     struct dadosCadastro aluno;
 
     f = fopen("cadastro.txt", "r");
@@ -24,8 +25,11 @@ int ultimoID(){
     else{
         while(!feof(f)){
             fscanf(f, "%d %s %s %f", &aluno.id, aluno.nome, aluno.sobrenome, &aluno.credito);
-            if(feof(f))
+            i++;
+            if(feof(f) && i == 1){
+                aluno.id = 0;
                 break;
+            }
         }
     }
     return aluno.id;

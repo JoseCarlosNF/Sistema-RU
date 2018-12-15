@@ -2,6 +2,8 @@
 #include "funcoes.c"
 #include <stdio.h>
 
+#define lotacaoMax 10
+
 int main(void){
     int opcao;
     int retorno;
@@ -17,10 +19,8 @@ int main(void){
         opcao = menuRU(lotacao, hora, minuto);
 
         // Menu RU - Opcao 1
-        if (opcao == 1){
+        if (opcao == 1)
             novoUsuario();
-            getchar();
-        }
 
         // Menu RU - Opcao 2
         else if (opcao == 2){
@@ -28,16 +28,12 @@ int main(void){
                 opcao = menuCredito();
 
                 // Menu Credito - Opcao 1
-                if (opcao == 1){
+                if (opcao == 1)
                     consultarCredito();
-                    getchar();
-                }
 
                 // Menu Credito - Opcao 2
-                else if (opcao == 2){
+                else if (opcao == 2)
                     comprarCredito();
-                    getchar();
-                }
 
                 // Menu Credito - Opcao 0
                 else if (opcao == 0)
@@ -51,9 +47,8 @@ int main(void){
 
         // Menu RU - Opcao 3
         else if (opcao == 3){
-            if ((11 <= hora && hora <= 14) && (lotacao < 300)){
+            if ((hora >= 11 && hora < 14) && (lotacao < lotacaoMax)){
                 retorno = entrarRU();
-                getchar();
                 if (retorno == 1){
                     lotacao++;
                     minuto += 10;
@@ -65,16 +60,17 @@ int main(void){
             }
             else if (11 > hora || hora > 14){
                 printf("Fora do Horario.\n");
-                getchar();
+                system("pause");
             }
-            else if (lotacao >= 300)
+            else if (lotacao >= lotacaoMax)
                 printf("Lotacao Maxima. Aguarde um momento.\n");
+                system("pause");
         }
 
         // Menu RU - Opcao 4
         else if (opcao == 4){
             arquivoTexto();
-            getchar();
+            system("pause");
         }
         
         // Menu RU - Opcao 0

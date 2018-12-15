@@ -46,12 +46,17 @@ void novoUsuario(void){
     else{
         printf("Digite Nome e Sobrenome <separedos por espaco>: ");
         scanf("%s %s", &aluno.nome, &aluno.sobrenome);
-        fprintf(f, "%-5d %-15s %-15s %.2f\n", ultimoID()+1, aluno.nome, aluno.sobrenome, 0.00);    
+        aluno.id = ultimoID()+1;
+        aluno.credito= 0.00;
+        fprintf(f, "%-5d %-15s %-15s %.2f\n", aluno.id, aluno.nome, aluno.sobrenome, aluno.credito);    
 
         fclose(f);
-        printf("Cadastro efetudao.\n");
-        printf("Aperter ENTER para continuar...\n");
-        getchar();
+
+        printf("====== Cadastro efetudao ======\n");
+        printf("%-5s %-15s %-15s %s\n", "ID", "NOME", "SOBRENOME", "CREDITO");
+        printf("%-5d %-15s %-15s %.2f\n", aluno.id, aluno.nome, aluno.sobrenome, aluno.credito);    
+        printf("===============================\n");        
+        system("pause");
     }
 }
 
@@ -79,8 +84,7 @@ void consultarCredito(void){
             else if (feof(f))
                 printf("ID nao encontrado.\n");
         }
-        printf("Aperter ENTER para continuar...\n");
-        getchar();
+        system("pause");
     }
 }
 
@@ -133,8 +137,7 @@ void comprarCredito(){
                 fprintf(aux, "%-5d %-15s %-15s %.2f\n", aluno.id, aluno.nome, aluno.sobrenome, compra);
 
                 printf("Compra efetudada.\n");
-                printf("Aperter ENTER para continuar...\n");
-                getchar();
+                system("pause");
             }
             else
                 fprintf(aux, "%-5d %-15s %-15s %.2f\n",aluno.id, aluno.nome, aluno.sobrenome, aluno.credito);                        
@@ -159,7 +162,7 @@ int entrarRU(){
     if (f == NULL)
         printf("Nao foi possivel abrir CADASTRO.TXT\n");
     else if (aux == NULL)
-        printf("Nao foi possivel abrir AUX.TXT\n");
+        printf("Nao foi possivel abrir TEMP.TXT\n");
     else{
         printf("Digite o ID do usuario: ");
         scanf("%d", &idBusca);
@@ -175,15 +178,11 @@ int entrarRU(){
                     fprintf(aux, "%-5d %-15s %-15s %.2f\n", aluno.id, aluno.nome, aluno.sobrenome, compra);                    
                     retorno = 1;
                     printf("Entrada Autorizada.\n");
-                    printf("Aperter ENTER para continuar...\n");
-                    getchar();                    
                 }
                 else{
                     fprintf(aux, "%-5d %-15s %-15s %.2f\n",aluno.id, aluno.nome, aluno.sobrenome, aluno.credito);                
                     retorno = 0;
                     printf("Saldo insuficiente.\n");
-                    printf("Aperter ENTER para continuar...\n");
-                    getchar();
                 }                    
             }
             else
@@ -214,6 +213,39 @@ void arquivoTexto(){
             printf("%-5d %-15s %-15s %.2f\n", aluno.id, aluno.nome, aluno.sobrenome, aluno.credito);
         }
     }
-    printf("Aperter ENTER para continuar...\n");
-    getchar();
+}
+
+int lotacaoMedia(int lotacao, int hora, int minuto){
+    int tempo = hora*60 + minuto;
+    int minutos_por_entrada = 10;
+    int lotacaoM1, lotacaoM2, lotacaoM3,
+        lotacaoM4, lotacaoM5, lotacaoM6;
+
+    printf("Lotacao atual: %d pessoas as %d:%-0d\n", lotacao, hora, minuto);
+    printf("Lotacao media:\n");
+
+    if (tempo >= 690){
+        lotacaoM1 = 30/minutos_por_entrada;
+        printf("   11:00 - 11:30: %d pessoas\n", lotacaoM1);
+    }
+    if (tempo >= 720){
+        lotacaoM2 = 60/minutos_por_entrada;
+        printf("   11:30 - 12:00: %d pessoas\n", lotacaoM2);
+    }
+    if (tempo >= 750){
+        lotacaoM3 = 90/minutos_por_entrada;
+        printf("   12:00 - 12:30: %d pessoas\n", lotacaoM3);
+    }
+    if (tempo >= 780){
+        lotacaoM4 = 120/minutos_por_entrada;
+        printf("   12:30 - 13:00: %d pessoas\n", lotacaoM4);
+    }
+    if (tempo >= 810){
+        lotacaoM5 = 150/minutos_por_entrada;
+        printf("   13:00 - 13:30: %d pessoas\n", lotacaoM5);
+    }
+    if (tempo >= 840){
+        lotacaoM6 = 180/minutos_por_entrada;
+        printf("   13:30 - 14:00: %d pessoas\n", lotacaoM6);
+    }
 }

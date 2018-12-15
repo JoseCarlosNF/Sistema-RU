@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "funcoes.h"
 #include "menu.h"
 
 
@@ -13,14 +14,7 @@ int menuRU(int lotacao, int hora, int minuto){
 
     limpatela();
 
-    printf("Lotacao atual: %d pessoas as %d:%-0d\n", lotacao, hora, minuto);
-    printf("Lotacao media: xyx\n");
-    printf("   11:00 - 11:30: 050 pessoas\n");
-    printf("   11:30 - 12:00: 100 pessoas\n");
-    printf("   12:00 - 12:30: 150 pessoas\n");
-    printf("   12:30 - 13:00: 200 pessoas\n");
-    printf("   13:00 - 13:30: 200 pessoas\n");
-    printf("   13:30 - 14:00: 150 pessoas\n");
+    lotacaoMedia(lotacao, hora, minuto);
 
     printf("=====/ MENU RU /=====\n");
     printf("1 - Novo Usuario\n");

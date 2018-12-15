@@ -13,7 +13,7 @@ Em Andamento: 🔆
 |2. Controle de Acesso|✅|
 |3. Creditos|✅|
 |4. Entrada|✅|
-|5. Media de lotação|❌|
+|5. Media de lotação|✅|
 
 ## 1 Cadastro no Sistema
 Manipulação de arquivos, utilizados como base de dados.

@@ -36,3 +36,6 @@ Manipulação de arquivos, utilizados como base de dados.
 ## 4 Contagem de Tempo
 - **Iniciar tempo com o valor de 10:00**
 - Adicionar **10 minutos** a cada entrada no RU.
+
+## Licença
+O projeto está licenciado como [GPL v.2](./LICENSE).
